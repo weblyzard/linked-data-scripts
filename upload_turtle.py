@@ -19,7 +19,7 @@ def parse_arguments():
     parser.add_argument("--encoding", help="Encoding used in the turtle files (default: utf-8).", default="utf-8")
     parser.add_argument("--repository-url", help="URL of the SPARQL repository to use.")
     parser.add_argument("--chunksize", help="Number of lines to upload at ones (default: 25000).", default=25000)
-    parser.add_argument("--skip", help="Number of lines to skip prior to the next upload (default: 0).", default=0)
+    parser.add_argument("--skip", help="Number of lines to skip prior to the next upload (default: 0).", type=int, default=0)
     return parser.parse_args()
 
 def upload_content(triple_list, repository_url, context):
