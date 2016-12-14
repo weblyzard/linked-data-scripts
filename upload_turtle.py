@@ -29,12 +29,12 @@ def upload_content(triple_list, repository_url, context):
     data = '\n'.join(triple_list).encode('utf-8')
     endpoint = '{repository_url}/rdf-graphs/{context}'.format(repository_url=repository_url,
                                                               context=context)
-    (response, msg) = httplib2.Http().request(endpoint, 'POST', body=data, headers={'Content-Type': 'text/turtle'})
+    (response, msg) = httplib2.Http().request(endpoint, 'POST', body=data, headers={'Content-Type': 'text/plain'})
 
     if response.status != 204:
         print("Response {}: {}".format(response.status, msg))
         print("Saving invalid data.")
-        with open("invalid.ttl", "w") as outfile:
+        with open("invalid.ttl", "wb") as outfile:
             outfile.write(data)
         exit(-1)
 
